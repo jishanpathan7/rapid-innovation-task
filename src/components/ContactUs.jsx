@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import styled from "styled-components";
-import Modal from "./Cards/ContentModal";
+import ContentModal from "./Cards/ContentModal";
 
 const Container = styled.div`
   max-width: 600px;
@@ -159,10 +159,8 @@ const ContactUs = () => {
         )}
       </Formik>
       {formData && (
-        <Modal isOpen={isModalOpen} onClose={() => setModalOpen(false)}>
-          <h2>Form Data</h2>
-          <pre>{JSON.stringify(formData, null, 2)}</pre>
-        </Modal>
+        <ContentModal isOpen={isModalOpen} onClose={() => setModalOpen(false)} formData={formData} />
+        
       )}
     </Container>
   );

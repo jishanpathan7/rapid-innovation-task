@@ -1,6 +1,6 @@
-import React from 'react';
-import styled from 'styled-components';
-import { useSelector } from 'react-redux';
+import React from "react";
+import styled from "styled-components";
+import { useSelector } from "react-redux";
 
 const ModalOverlay = styled.div`
   position: fixed;
@@ -15,13 +15,32 @@ const ModalOverlay = styled.div`
 `;
 
 const ModalContent = styled.div`
-  background: ${({ theme }) => (theme === 'light' ? 'white' : '#333')};
-  color: ${({ theme }) => (theme === 'light' ? 'black' : 'white')};
+  background: ${({ theme }) => (theme === "light" ? "white" : "#333")};
+  color: ${({ theme }) => (theme === "light" ? "black" : "white")};
   padding: 50px;
   position: relative;
   border-radius: 4px;
   max-width: 500px;
   width: 100%;
+  max-height: 500px;
+  overflow-y: scroll;
+
+  p {
+    font-weight: 600;
+
+    span {
+      font-weight: 400;
+      margin-left: 10px;
+    }
+  }
+`;
+
+const ModalDescription = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: start;
+  justify-content: start;
 `;
 
 const CloseButton = styled.button`
@@ -30,14 +49,20 @@ const CloseButton = styled.button`
   right: 10px;
   background: transparent;
   border: none;
-  font-size: 1.5rem;
+  font-size: 2rem;
   cursor: pointer;
-  color: ${({ theme }) => (theme === 'light' ? 'black' : 'white')};
+  color: ${({ theme }) => (theme === "light" ? "black" : "white")};
 `;
 
-const Modal = ({ isOpen, onClose, children }) => {
+const Image = styled.img`
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+`;
+
+const ContentModal = ({ isOpen, onClose, formData }) => {
   const theme = useSelector((state) => state.theme.theme);
-  console.log("theme", theme)
+  console.log("theme", theme);
 
   if (!isOpen) return null;
 
@@ -47,10 +72,44 @@ const Modal = ({ isOpen, onClose, children }) => {
         <CloseButton theme={theme} onClick={onClose}>
           &times;
         </CloseButton>
-        {children}
+
+        <p>
+          Name: <span>{formData?.name}</span>
+        </p>
+        <p>
+          Email: <span>{formData?.email}</span>
+        </p>
+        <p>
+          Address: <span>{formData?.address}</span>
+        </p>
+        <p>
+          Bio: <span>{formData?.bio}</span>
+        </p>
+        <p>
+          Date of Birth: <span>{formData?.dateOfBirth}</span>
+        </p>
+
+        <ModalDescription>
+          <p>Profile:</p>
+          {formData?.profileImage && (
+            <Image
+              src={URL.createObjectURL(formData?.profileImage)}
+              alt="Profile"
+            />
+          )}
+        </ModalDescription>
+        <ModalDescription>
+          <p>Banner:</p>
+          {formData?.profileImage && (
+            <Image
+              src={URL.createObjectURL(formData?.profileImage)}
+              alt="Profile"
+            />
+          )}
+        </ModalDescription>
       </ModalContent>
     </ModalOverlay>
   );
 };
 
-export default Modal;
+export default ContentModal;
