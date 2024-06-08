@@ -10,7 +10,6 @@ const HeaderWrapper = styled.header`
   width: 90%;
   color: #d7bbf9;
   position: relative;
-
   @media (max-width: 768px) {
     margin-top: 20px;
   }
@@ -67,29 +66,30 @@ const HeaderWrapper = styled.header`
   .mobile-menu {
     display: none;
     flex-direction: column;
-    align-items: center;
     position: fixed;
     top: 0;
-    right: 0;
-    width: 250px;
-    height: 100%;
+    right: 0px;
+    width: 91%;
     background: #fff;
     color: #000;
-    padding: 20px;
-    box-shadow: -4px 0 10px rgba(0, 0, 0, 0.1);
+    padding: 0 20px;
     z-index: 1000;
 
     ul {
       list-style: none;
       width: 100%;
+      padding: 0;
+      margin: 0;
 
       li {
-        margin: 10px 0;
-        text-align: center;
+        border-bottom: 1px solid #f3f3f3;
+        text-align: left;
+        padding: 20px 0px;
 
         a {
           text-decoration: none;
           color: #000;
+          opacity: 60%;
           font-size: 1.2rem;
         }
 
@@ -102,7 +102,7 @@ const HeaderWrapper = styled.header`
     .close-btn {
       align-self: flex-end;
       cursor: pointer;
-      font-size: 1.5rem;
+      font-size: 2rem;
     }
 
     &.active {

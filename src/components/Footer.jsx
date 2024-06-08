@@ -59,12 +59,7 @@ const FooterWrapper = styled.footer`
         }
       }
     }
-
-    p {
-      margin: 10px 0;
-      font-size: 1.5rem;
-      color: #777;
-    }
+    
     @media (max-width: 768px) {
       flex-wrap: wrap;
       }
@@ -87,7 +82,6 @@ const Footer = () => {
       </div>
       <div className="footer-bottom">
         <div className="company-logo">WORDPRESS.ORG</div>
-        <p>CODE IS POETRY</p>
         <div className="social-icons">
           <a href="#facebook">
             <Facebook />

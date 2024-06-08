@@ -5,6 +5,10 @@ import { featureData } from "../data/constant";
 const FeaturesWrapper = styled.section`
   padding: 60px;
 
+  @media (max-width:768px) {
+     padding: 20px 0;   
+  }
+
   .features-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -32,6 +36,8 @@ const FeaturesWrapper = styled.section`
       color: #67768e;
       font-weight: 500;
     }
+
+    
   }
 `;
 

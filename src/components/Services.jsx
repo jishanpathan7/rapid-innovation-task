@@ -6,11 +6,16 @@ import { serviceData } from "../data/constant";
 const ServicesWrapper = styled.section`
   padding: 60px;
 
+  @media (max-width:768px) {
+     padding: 0;
+    }
+
   h1 {
     text-align: left;
     margin-bottom: 20px;
     font-size: 2.5rem;
     padding-left: 30px;
+
   }
 
   .service-cards {
