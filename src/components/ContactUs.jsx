@@ -39,10 +39,10 @@ const Input = styled(Field)`
 `;
 
 const TextInput = styled(Field)`
-  width: 100%;
+  width: 97%;
   padding: 8px;
-  height: 100px;
-  margin-bottom: 5px;
+  text-align: left;
+  height: 40px;
   background-color: ${({ theme }) => (theme === "light" ? "#fff" : "#555")};
   color: ${({ theme }) => (theme === "light" ? "#000" : "#fff")};
   border: 1px solid ${({ theme }) => (theme === "light" ? "#ddd" : "#444")};
@@ -76,7 +76,7 @@ const ContactUs = () => {
     email: Yup.string().email("Invalid email address").required("Required"),
     address: Yup.string().required("Required"),
     dateOfBirth: Yup.date().required("Required"),
-    bio: Yup.string().required("Required"),
+    bio: Yup.string(),
     profileImage: Yup.mixed().required("Required"),
     bannerImage: Yup.mixed().required("Required"),
   });
@@ -86,8 +86,6 @@ const ContactUs = () => {
     setFormData(values);
     setModalOpen(true);
   };
-
-  console.log("formdata", formData);
 
   return (
     <Container theme={theme}>
@@ -109,27 +107,51 @@ const ContactUs = () => {
           <Form>
             <FormField>
               <Label htmlFor="name">Name</Label>
-              <Input name="name" type="text" theme={theme} />
+              <Input
+                name="name"
+                type="text"
+                placeholder="Enter your name"
+                theme={theme}
+              />
               <ErrorMessage name="name" component={ErrorText} />
             </FormField>
             <FormField>
               <Label htmlFor="email">Email</Label>
-              <Input name="email" type="email" theme={theme} />
+              <Input
+                name="email"
+                type="email"
+                placeholder="Enter your email"
+                theme={theme}
+              />
               <ErrorMessage name="email" component={ErrorText} />
             </FormField>
             <FormField>
               <Label htmlFor="address">Address</Label>
-              <Input name="address" type="text" theme={theme} />
+              <Input
+                name="address"
+                type="text"
+                placeholder="Enter your address"
+                theme={theme}
+              />
               <ErrorMessage name="address" component={ErrorText} />
             </FormField>
             <FormField>
               <Label htmlFor="dateOfBirth">Date of Birth</Label>
-              <Input name="dateOfBirth" type="date" theme={theme} />
+              <Input
+                name="dateOfBirth"
+                type="date"
+                placeholder="Select your date of birth"
+                theme={theme}
+              />
               <ErrorMessage name="dateOfBirth" component={ErrorText} />
             </FormField>
             <FormField>
               <Label htmlFor="bio">Bio</Label>
-              <TextInput name="bio" theme={theme} />
+              <TextInput
+                name="bio"
+                placeholder="Enter your bio"
+                theme={theme}
+              />
               <ErrorMessage name="bio" component={ErrorText} />
             </FormField>
             <FormField>
@@ -159,8 +181,11 @@ const ContactUs = () => {
         )}
       </Formik>
       {formData && (
-        <ContentModal isOpen={isModalOpen} onClose={() => setModalOpen(false)} formData={formData} />
-        
+        <ContentModal
+          isOpen={isModalOpen}
+          onClose={() => setModalOpen(false)}
+          formData={formData}
+        />
       )}
     </Container>
   );

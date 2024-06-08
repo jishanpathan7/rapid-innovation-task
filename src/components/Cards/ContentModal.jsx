@@ -62,7 +62,6 @@ const Image = styled.img`
 
 const ContentModal = ({ isOpen, onClose, formData }) => {
   const theme = useSelector((state) => state.theme.theme);
-  console.log("theme", theme);
 
   if (!isOpen) return null;
 
@@ -100,9 +99,9 @@ const ContentModal = ({ isOpen, onClose, formData }) => {
         </ModalDescription>
         <ModalDescription>
           <p>Banner:</p>
-          {formData?.profileImage && (
+          {formData?.bannerImage && (
             <Image
-              src={URL.createObjectURL(formData?.profileImage)}
+              src={URL.createObjectURL(formData?.bannerImage)}
               alt="Profile"
             />
           )}
